@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home product</title>
+
+    <style>
+        html {
+            font-size: 62.5%;
+            line-height: 1.6rem;
+            box-sizing: border-box;
+        }
+
+        .grid {
+            width: 1200px;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .grid__row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-left: -5px;
+            margin-right: -5px;
+        }
+
+        .grid__column-2 {
+            padding-left: 5px;
+            padding-right: 5px;
+            width: 15%;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 3rem;
+        }
+
+        .create {
+            display: block;
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-decoration: none;
+        }
+
+        .img {
+            width: 170px;
+            height: 170px;
+            margin-top: 15px;
+        }
+
+        img {
+            width: 95%;
+            height: 170px;
+            margin-left: 10px;
+
+        }
+
+        .name, .cost {
+            font-size: 2rem;
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        .cost {
+            font-size: 1.5rem;
+            margin: 15px 0;
+            color: red;
+        }
+
+        .container {
+            border: 1px solid #eee;
+
+        }
+
+        .container__link {
+            text-decoration: none;
+        }
+
+        .cost__title {
+            color: #787676;
+            font-weight: 200;
+        }
+
+        .action {
+            display: flex;
+            justify-content: center;
+        }
+
+        .update, .delete {
+            display: block;
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 15px;
+            text-decoration: none;
+        }
+
+    </style>
+
+</head>
+<body id="product">
+<h1>List Product</h1>
+<a class="create" th:href="@{/create}">Create product</a>
+
+<div class="grid">
+    <div class="grid__row">
+        <div class="grid__column-2 container" th:each="product : ${productList}">
+            <a class="container__link" th:href="@{/details/__${product.id}__}">
+                <div class="img"><img th:src="@{'/image/' + ${product.img}}" alt=""></div>
+                <div class="name" th:text="${product.name}"></div>
+                <div class="cost">
+                    <span class="cost__title">Giá: </span>
+                    <span th:text="${product.cost}"></span>
+                    <span>VND</span>
+                </div>
+                <div class="action">
+                    <a class="update" th:href="@{/update/__${product.id}__}">Update</a>
+                    <a class="delete" th:href="@{/delete/__${product.id}__}">Delete</a>
+
+                </div>
+            </a>
+
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

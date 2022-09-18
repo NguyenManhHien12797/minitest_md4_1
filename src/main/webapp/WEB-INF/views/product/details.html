@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head >
+    <meta charset="UTF-8">
+    <title>Details product</title>
+
+    <style>
+        html{
+            font-size: 62.5%;
+            line-height: 1.6rem;
+            box-sizing: border-box;
+        }
+        .grid{
+            width: 1200px;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .grid__row{
+            display: flex;
+            flex-wrap: wrap;
+            margin-left: -5px;
+            margin-right: -5px;
+        }
+        .grid__column-4{
+            padding-left: 5px;
+            padding-right: 5px;
+            width: 33.3%;
+        }
+
+        .grid__column-8{
+            padding-left: 5px;
+            padding-right: 5px;
+            width: 65%;
+        }
+
+        img{
+            width: 100%;
+        }
+        .name{
+            font-size: 3rem;
+            margin: 20px 75px;
+        }
+        .cost{
+            font-size: 2rem;
+            color: red;
+            margin: 0 75px;
+        }
+        .cost__title{
+            color: #787676;
+            font-weight: 200;
+        }
+        h1{
+            font-size: 3.5rem;
+            text-align: center;
+        }
+        .link{
+            display: flex;
+            justify-content: center;
+        }
+        .home,.update{
+            display: block;
+            text-align: center;
+            font-size: 2rem;
+            text-decoration: none;
+            margin:0 20px 20px 0;
+        }
+
+    </style>
+</head>
+<body>
+<h1>Details product</h1>
+<div class="link">
+    <a class="home" th:href="@{/home}">Home</a>
+    <a class="update" th:href="@{/update/__${product.id}__}">Update</a>
+</div>
+
+
+<div class="grid">
+    <div class="grid__row">
+        <div class="grid__column-4">
+            <div class="img"><img th:src="@{'/image/' + ${product.img}}" alt=""></div>
+        </div>
+
+        <div class="grid__column-8">
+            <div class="name" th:text="${product.name}"></div>
+            <div class="cost" >
+                <span class="cost__title">Giá: </span>
+                <span th:text="${product.cost}"></span>
+                <span>VND</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
