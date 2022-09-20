@@ -2,18 +2,20 @@ package com.example.minitest_md4_1.model;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 public class ProductForm {
 
     private int id;
-    private String name;
+    private List<String> name;
 
-    private Long cost;
-    private MultipartFile img;
+    private List<Long> cost;
+    private List<MultipartFile> img;
 
     public ProductForm() {
     }
 
-    public ProductForm(int id, String name,Long cost, MultipartFile img) {
+    public ProductForm(int id, List<String> name,List<Long> cost, List<MultipartFile> img) {
         this.id = id;
         this.name = name;
         this.cost = cost;
@@ -28,27 +30,27 @@ public class ProductForm {
         this.id = id;
     }
 
-    public String getName() {
+    public List<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(List<String> name) {
         this.name = name;
     }
 
-    public Long getCost() {
+    public List<Long> getCost() {
         return cost;
     }
 
-    public void setCost(Long cost) {
+    public void setCost(List<Long> cost) {
         this.cost = cost;
     }
 
-    public MultipartFile getImg() {
+    public List<MultipartFile> getImg() {
         return img;
     }
 
-    public void setImg(MultipartFile img) {
+    public void setImg(List<MultipartFile> img) {
         this.img = img;
     }
 }

@@ -3,6 +3,7 @@ package com.example.minitest_md4_1.controller;
 import com.example.minitest_md4_1.model.Product;
 import com.example.minitest_md4_1.model.ProductForm;
 import com.example.minitest_md4_1.service.product.IProductService;
+import org.apache.commons.fileupload.FileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -44,20 +46,41 @@ public class ProductController {
     }
     @PostMapping("/create")
     public ModelAndView createProduct(@ModelAttribute ProductForm productForm){
-        MultipartFile multipartFile = productForm.getImg();
-        String fileName= multipartFile.getOriginalFilename();
-        try{
-            FileCopyUtils.copy(productForm.getImg().getBytes(), new File(fileUpload+ fileName));
-        }catch (IOException e){
-            e.printStackTrace();
+        List<MultipartFile> multipartFile = productForm.getImg();
+        for(int i=0; i<multipartFile.size();i++){
+            String fileName= multipartFile.get(i).getOriginalFilename();
+            try{
+                FileCopyUtils.copy(productForm.getImg().get(i).getBytes(), new File(fileUpload+ fileName));
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+            Product product = new Product(productForm.getId(), productForm.getName().get(i),productForm.getCost().get(i),fileName);
+            productService.insert(product);
         }
-        Product product = new Product(productForm.getId(), productForm.getName(),productForm.getCost(),fileName);
         ModelAndView modelAndView = new ModelAndView("/product/create");
         modelAndView.addObject("product", new Product());
-        productService.insert(product);
+        modelAndView.addObject("mess","Đã thêm thành công!!");
+
         return modelAndView;
     }
 
+
+//    @PostMapping("/create")
+//    public ModelAndView createProduct(@ModelAttribute ProductForm productForm){
+//        MultipartFile multipartFile = productForm.getImg();
+//        String fileName= multipartFile.getOriginalFilename();
+//        try{
+//            FileCopyUtils.copy(productForm.getImg().getBytes(), new File(fileUpload+ fileName));
+//        }catch (IOException e){
+//            e.printStackTrace();
+//        }
+//        Product product = new Product(productForm.getId(), productForm.getName(),productForm.getCost(),fileName);
+//        ModelAndView modelAndView = new ModelAndView("/product/create");
+//        modelAndView.addObject("product", new Product());
+//        modelAndView.addObject("mess","Đã thêm thành công!!");
+//        productService.insert(product);
+//        return modelAndView;
+//    }
     @GetMapping("/details/{id}")
     public ModelAndView showDetails(@PathVariable int id){
         ModelAndView modelAndView = new ModelAndView("/product/details");
@@ -76,19 +99,24 @@ public class ProductController {
 
     @PostMapping("/update/{id}")
     public ModelAndView updateProduct(@ModelAttribute ProductForm productForm){
-        MultipartFile multipartFile = productForm.getImg();
-        String fileName= multipartFile.getOriginalFilename();
-        try{
-            FileCopyUtils.copy(productForm.getImg().getBytes(), new File(fileUpload+ fileName));
-        }catch (IOException e){
-            e.printStackTrace();
+        List<MultipartFile> multipartFile = productForm.getImg();
+        for(int i=0; i<multipartFile.size();i++){
+            String fileName= multipartFile.get(i).getOriginalFilename();
+            try{
+                FileCopyUtils.copy(productForm.getImg().get(i).getBytes(), new File(fileUpload+ fileName));
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+            Product product = new Product(productForm.getId(), productForm.getName().get(i),productForm.getCost().get(i),fileName);
+            productService.update(product);
         }
-        Product product = new Product(productForm.getId(), productForm.getName(),productForm.getCost(),fileName);
         ModelAndView modelAndView =new ModelAndView("/product/update");
         modelAndView.addObject("product", new Product());
-        productService.update(product);
+        modelAndView.addObject("mess","Đã Update thành công!!");
+
         return modelAndView;
     }
+
 
 
 //    @GetMapping("/delete/{id}")

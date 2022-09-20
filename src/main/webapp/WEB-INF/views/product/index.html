@@ -20,19 +20,33 @@
         .grid__row {
             display: flex;
             flex-wrap: wrap;
-            margin-left: -5px;
-            margin-right: -5px;
         }
 
         .grid__column-2 {
-            padding-left: 5px;
-            padding-right: 5px;
             width: 15%;
         }
 
         h1 {
             text-align: center;
             font-size: 3rem;
+            color: #e93f7c;
+        }
+        .container {
+            margin: 5px;
+            border: 1px solid #eee;
+            box-shadow: 0.3rem 0.3rem 0.3rem #f2eff0;
+            box-shadow: 0.4rem 0.4rem 0.3rem #d582a0;
+            box-shadow: 0.6rem 0.6rem 0.3rem #f0b8cc;
+
+        }
+
+        .container:hover{
+            transform: translateY(-5px);
+        }
+
+        .container__link {
+            text-decoration: none;
+            color: #343333;
         }
 
         .create {
@@ -41,6 +55,10 @@
             font-size: 2rem;
             margin-bottom: 20px;
             text-decoration: none;
+        }
+        .create:hover{
+            color: #d582a0;
+            transform: translateY(-3px);
         }
 
         .img {
@@ -68,14 +86,7 @@
             color: red;
         }
 
-        .container {
-            border: 1px solid #eee;
 
-        }
-
-        .container__link {
-            text-decoration: none;
-        }
 
         .cost__title {
             color: #787676;
@@ -92,7 +103,12 @@
             text-align: center;
             font-size: 1.5rem;
             margin: 15px;
+            color: cornflowerblue;
             text-decoration: none;
+        }
+        .update:hover, .delete:hover{
+            color: #86acf0;
+            transform: translateY(-3px);
         }
 
     </style>

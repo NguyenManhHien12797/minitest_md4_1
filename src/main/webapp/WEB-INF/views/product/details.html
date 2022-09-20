@@ -34,8 +34,25 @@
             width: 65%;
         }
 
+        .container__details{
+            width: 90%;
+            border: 1px solid #d582a0;
+            border-radius: 4px;
+            box-shadow: 0.2rem 0.2rem 0.3rem #d582a0;
+            box-shadow: 0.2rem 0.2rem 0.3rem #e0a3b9;
+        }
+        .img{
+            border-radius: 4px;
+            background-color: #d582a0;
+            height: 622px;
+            border: 1px solid #d582a0;
+            box-shadow: 0.2rem 0.2rem 0.3rem #d582a0;
+            box-shadow: 0.2rem 0.2rem 0.3rem #e0a3b9;
+        }
         img{
-            width: 100%;
+            border-radius: 4px;
+            margin: 20px;
+            width:90%;
         }
         .name{
             font-size: 3rem;
@@ -53,6 +70,7 @@
         h1{
             font-size: 3.5rem;
             text-align: center;
+            color: #e93f7c;
         }
         .link{
             display: flex;
@@ -64,6 +82,22 @@
             font-size: 2rem;
             text-decoration: none;
             margin:0 20px 20px 0;
+        }
+
+        .home:hover,.update:hover{
+            color: #d582a0;
+            transform: translateY(-3px);
+        }
+        .dicription{
+            font-size: 1.8rem;
+            line-height: 2.5rem;
+            width: 400px;
+            margin: 20px 75px;
+        }
+
+        .dicription span{
+            display: block;
+            margin-bottom: 10px;
         }
 
     </style>
@@ -83,11 +117,27 @@
         </div>
 
         <div class="grid__column-8">
-            <div class="name" th:text="${product.name}"></div>
-            <div class="cost" >
-                <span class="cost__title">Giá: </span>
-                <span th:text="${product.cost}"></span>
-                <span>VND</span>
+            <div class="container__details">
+                <div class="name" th:text="${product.name}"></div>
+                <div class="cost" >
+                    <span class="cost__title">Giá: </span>
+                    <span th:text="${product.cost}"></span>
+                    <span>VND</span>
+                </div>
+                <div class="dicription">
+                <span>
+                    Tìm hiểu cấu tạo về đàn guitar ra đời có lẽ được khởi nguồn từ ý tưởng về tiếng bật của dây cung khi mũi tên phóng đi trong hoạt động săn bắn của những người thợ săn cổ.
+                    Các nghiên cứu cho thấy cây đàn guitar đầu tiên xuất hiện ở Ai Cập và Babylon vào khoảng 1000 năm trước Công nguyên.
+                    Đến thế kỷ thứ 8, đàn guitar được mang đến châu Âu để rồi 6 thế kỷ sau đó đạt tới thời kỳ cực thịnh về mức độ phổ biến, đặc biệt tại Tây Ban Nha.
+                    Đó cũng là lý do guitar còn có tên gọi khác là Tây Ban cầm.
+                </span>
+
+                    <span>
+                    Đàn guitar là loại nhạc cụ gồm nhiều bộ phận khác nhau có tác dụng gắn kết, hỗ trợ để tạo nên các giai điệu, âm thanh hoàn chỉnh.
+                    Các bộ phận đó bao gồm thùng đàn, đầu đàn, bộ khóa, lược, cần đàn, phím đàn, ngựa đàn và dây đàn. Trong đó, bộ phận quan trọng nhất là thùng đàn với tác dụng cộng hưởng và khuếch đại âm thanh khi dây đàn rung lên.
+                    Dây đàn guitar có thể được làm bằng nylon hay kim loại với độ dày khác nhau tùy thuộc vào từng loại đàn, ví dụ như Guitar Acoustic hay Guitar điện.
+                </span>
+            </div>
             </div>
         </div>
     </div>
